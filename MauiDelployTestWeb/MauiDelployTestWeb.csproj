@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\packages\mauDeployTest_1.0.0.1_Test\Dependencies\arm64\Microsoft.WindowsAppRuntime.1.2.msix" />
+    <Content Remove="wwwroot\packages\mauDeployTest_1.0.0.1_Test\Dependencies\win32\Microsoft.WindowsAppRuntime.1.2.msix" />
+    <Content Remove="wwwroot\packages\mauDeployTest_1.0.0.1_Test\Dependencies\x64\Microsoft.WindowsAppRuntime.1.2.msix" />
+    <Content Remove="wwwroot\packages\mauDeployTest_1.0.0.1_Test\Dependencies\x86\Microsoft.WindowsAppRuntime.1.2.msix" />
+    <Content Remove="wwwroot\packages\mauDeployTest_1.0.0.1_Test\mauDeployTest_1.0.0.1_x64.cer" />
+    <Content Remove="wwwroot\packages\mauDeployTest_1.0.0.1_Test\mauDeployTest_1.0.0.1_x64.msix" />
+    <Content Remove="wwwroot\packages\Test.msix" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\packages\mauDeployTest_1.0.0.1_Test\Dependencies\arm64\Microsoft.WindowsAppRuntime.1.2.msix" />
+    <None Include="wwwroot\packages\mauDeployTest_1.0.0.1_Test\Dependencies\win32\Microsoft.WindowsAppRuntime.1.2.msix" />
+    <None Include="wwwroot\packages\mauDeployTest_1.0.0.1_Test\Dependencies\x64\Microsoft.WindowsAppRuntime.1.2.msix" />
+    <None Include="wwwroot\packages\mauDeployTest_1.0.0.1_Test\Dependencies\x86\Microsoft.WindowsAppRuntime.1.2.msix" />
+    <None Include="wwwroot\packages\mauDeployTest_1.0.0.1_Test\mauDeployTest_1.0.0.1_x64.cer" />
+    <None Include="wwwroot\packages\mauDeployTest_1.0.0.1_Test\mauDeployTest_1.0.0.1_x64.msix" />
+    <None Include="wwwroot\packages\Test.msix">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="packages\Test.msix">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
