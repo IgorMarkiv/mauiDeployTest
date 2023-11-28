@@ -24,7 +24,7 @@ if (!app.Environment.IsDevelopment())
 
 var provider = new FileExtensionContentTypeProvider();
 provider.Mappings[".msix"] = "application/msix";
-provider.Mappings["msix"] = "application/msix";
+//provider.Mappings["msix"] = "application/msix";
 
 app.UseStaticFiles(new StaticFileOptions
 {
