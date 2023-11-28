@@ -14,6 +14,7 @@
     <Content Remove="wwwroot\packages\mauDeployTest_1.0.0.1_Test\mauDeployTest_1.0.0.1_x64.cer" />
     <Content Remove="wwwroot\packages\mauDeployTest_1.0.0.1_Test\mauDeployTest_1.0.0.1_x64.msix" />
     <Content Remove="wwwroot\packages\Test.msix" />
+    <Content Remove="wwwroot\Test.msix" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,10 +27,16 @@
     <None Include="wwwroot\packages\Test.msix">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="wwwroot\Test.msix">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="packages\Test.msix">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Test.msix">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

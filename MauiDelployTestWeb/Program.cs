@@ -23,14 +23,11 @@ if (!app.Environment.IsDevelopment())
 
 
 var provider = new FileExtensionContentTypeProvider();
-// Add new mappings
 provider.Mappings[".msix"] = "application/msix";
 provider.Mappings["msix"] = "application/msix";
 
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory()),
-    RequestPath = "/home/packages/Test.msix",
     ContentTypeProvider = provider
 });
 
