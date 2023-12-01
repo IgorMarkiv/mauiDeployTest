@@ -1,0 +1,82 @@
+msbuild mauDeployTest.csproj /t:Publish /p:PublishMethod=ClickOnce /p:ApplicationVersion=1.0.0.0 /p:Install=true /p:PublishURL=http://yourserver/publish/
+
+
+msbuild mauDeployTest.csproj /t:Publish -f  net7.0-windows10.0.19041.0 /p:PublishMethod=ClickOnce /p:ApplicationVersion=1.0.0.0 /p:Install=true /p:PublishURL=http://yourserver/publish/
+
+msbuild mauDeployTest.csproj /t:Publish /p:PublishMethod=ClickOnce /p:AfterTargets="ClickOncePublish" /p:TargetFramework=net7.0-windows10.0.19041.0 /p:ApplicationVersion=1.0.0.0 /p:Install=false  /p:Test=false
+msbuild mauDeployTest.csproj /t:Publish /p:PublishMethod=ClickOnce /p:TargetFramework=net7.0-windows10.0.19041.0 /p:ApplicationVersion=1.0.0.0 /p:Install=true /p:PublishURL=http://yourserver/publish/
+
+
+
+
+v1----
+dotnet mage -al mauDeployTest.exe -td output
+
+dotnet mage -new Application -t output\mauDeployTest.manifest -fd output -v 1.0.0.1
+
+dotnet mage -new Deployment -Install false -pub S4H -v 1.0.0.1 -AppManifest output\mauDeployTest.manifest -t mauDeployTest.application -ip true -pu https://google.com/ 
+
+
+
+---
+shared disc \\10.10.200.1\Share\!users\Igor\TestMauiDeploy
+
+v2----
+dotnet mage -al mauiDeployTest.exe -td \\10.10.200.1\Share\!users\Igor\TestMauiDeploy
+
+dotnet mage -new Application -t \\10.10.200.1\Share\!users\Igor\TestMauiDeploy\mauiDeployTest.manifest -fd \\10.10.200.1\Share\!users\Igor\TestMauiDeploy -v 1.0.0.1
+
+dotnet mage -new Deployment -Install true -pub S4H -v 1.0.0.1 -AppManifest \\10.10.200.1\Share\!users\Igor\TestMauiDeploy\mauiDeployTest.manifest -t C:\Users\Admin\Desktop\mauiDeployTest.application -ip true -pu https://s4h.pl/
+
+
+C:\Users\Admin\Desktop\ClickOnceDeployLocation
+v3----
+dotnet mage -al mauiAppTest.exe -td C:\Users\Admin\Desktop\ClickOnceDeployLocation
+
+dotnet mage -new Application -t C:\Users\Admin\Desktop\ClickOnceDeployLocation\mauiDeployTest.manifest -fd C:\Users\Admin\Desktop\ClickOnceDeployLocation -v 1.0.0.1
+
+dotnet mage  -new Deployment -n mauiAppTest -Install true -pub S4H -v 1.0.0.1 -AppManifest C:\Users\Admin\Desktop\ClickOnceDeployLocation\mauiDeployTest.manifest -t C:\Users\Admin\Desktop\mauiDeployTest.application -ip true -pu https://s4h.pl/
+
+
+
+
+
+
+
+
+
+
+msbuild ConsoleApp1.csproj /t:Publish /p:PublishMethod=ClickOnce
+v4 ---- 
+
+dotnet mage -al consoleTest.exe -td "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\ConsoleApp1\bin\Debug\net8.0"
+
+dotnet mage -new Application -t "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\ConsoleApp1\bin\Debug\net8.0\consoleTest.manifest" -fd "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\ConsoleApp1\bin\Debug\net8.0" -v 1.0.0.1
+
+dotnet mage  -new Deployment -n consoleTest -Install true -pub S4H -v 1.0.0.1 -AppManifest "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\ConsoleApp1\bin\Debug\net8.0\consoleTest.manifest" -t "C:\Users\Admin\Desktop\consoleTest.application" -ip true -pu "C:\Users\Admin\Desktop\consoleTest.application"
+
+
+
+
+
+hello world console app ---- 
+msbuild ConsoleApp1.csproj /t:Publish /p:PublishMethod=ClickOnce /p:Configuration=Release
+
+dotnet mage -al ConsoleApp1.exe -td "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\ConsoleApp1\bin\Release\net8.0"
+
+dotnet mage -new Application -t "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\ConsoleApp1\bin\Release\net8.0\ConsoleApp1.dll.manifest" -fd "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\ConsoleApp1\bin\Release\net8.0" -v 1.0.0.1
+
+dotnet mage  -new Deployment -n consoleTest -Install true -pub S4H -v 1.0.0.1 -AppManifest "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\ConsoleApp1\bin\Release\net8.0\ConsoleApp1.dll.manifest" -t "C:\Users\Admin\Desktop\wzz_consoleTest.application" -ip true -pu "C:\Users\Admin\Desktop\wzz_consoleTest.application"
+
+
+
+
+NAUI ---- 
+msbuild mauDeployTest.csproj /t:Publish /p:PublishMethod=ClickOnce /p:ApplicationVersion=1.0.0.0 /p:Install=true  /p:Configuration=Release
+
+dotnet mage -al mauDeployTest.exe -td "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\mauDeployTest\bin\Release\net7.0-windows10.0.22621.0\win10-x64"
+
+dotnet mage -new Application -t "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\mauDeployTest\bin\Release\net7.0-windows10.0.22621.0\win10-x64\mauDeployTest.manifest" -fd "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\mauDeployTest\bin\Release\net7.0-windows10.0.22621.0\win10-x64" -v 1.0.0.1
+
+dotnet mage  -new Deployment -n mauDeployTest -Install true -pub S4H -v 1.0.0.1 -AppManifest "C:\Users\Admin\Desktop\mauiPublishTest\mauiDeployTest\mauDeployTest\bin\Release\net7.0-windows10.0.22621.0\win10-x64\mauDeployTest.manifest" -t "C:\Users\Admin\Desktop\wzz_mauDeployTest.application" -ip true -pu "C:\Users\Admin\Desktop\wzz_mauDeployTest.application"
+
